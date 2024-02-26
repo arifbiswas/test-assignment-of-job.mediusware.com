@@ -71,6 +71,9 @@ const Problem1 = () => {
       } else if (all && activeData) {
         const collectData = [...all, ...activeData];
         setData(collectData);
+      } else if (all) {
+        const collectData = [...all];
+        setData(collectData);
       }
     }
     if (show === "active" && activeData) {
