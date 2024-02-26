@@ -58,9 +58,20 @@ const Problem1 = () => {
     const activeData = JSON.parse(localStorage.getItem("active"));
     const completed = JSON.parse(localStorage.getItem("completed"));
     const all = JSON.parse(localStorage.getItem("all"));
-    if (show === "all" && all && completed && activeData) {
-      const collectData = [...activeData, ...completed, ...all];
-      setData(collectData);
+    if (show === "all") {
+      if (completed && all && activeData) {
+        const collectData = [...activeData, ...completed, ...all];
+        setData(collectData);
+      } else if (completed && all) {
+        const collectData = [...completed, ...all];
+        setData(collectData);
+      } else if (completed && activeData) {
+        const collectData = [...completed, ...activeData];
+        setData(collectData);
+      } else if (all && activeData) {
+        const collectData = [...all, ...activeData];
+        setData(collectData);
+      }
     }
     if (show === "active" && activeData) {
       setData(activeData);
