@@ -58,14 +58,14 @@ const Problem1 = () => {
     const activeData = JSON.parse(localStorage.getItem("active"));
     const completed = JSON.parse(localStorage.getItem("completed"));
     const all = JSON.parse(localStorage.getItem("all"));
-    if (show === "all") {
+    if (show === "all" && all && completed && activeData) {
       const collectData = [...activeData, ...completed, ...all];
       setData(collectData);
     }
-    if (show === "active") {
+    if (show === "active" && activeData) {
       setData(activeData);
     }
-    if (show === "completed") {
+    if (show === "completed" && completed) {
       setData(completed);
     }
   }, [show, dataActivity]);
@@ -143,7 +143,7 @@ const Problem1 = () => {
                 data?.map((item, index) => (
                   <tr key={index} className="flex-column ">
                     <td scope="col">{item?.name}</td>
-                    <td scope="col">{item.status}</td>
+                    <td scope="col">{item?.status}</td>
                   </tr>
                 ))}
             </thead>
